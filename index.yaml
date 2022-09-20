@@ -3,6 +3,16 @@ entries:
   sample-chart:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-09-20T13:07:29.033517695Z"
+    description: A Helm chart for Kubernetes
+    digest: 5d48cfd0d0197f75e960584d7819e10465ae72609619519fc198e49cce9afc8c
+    name: sample-chart
+    type: application
+    urls:
+    - https://github.com/middleware-labs/helm-charts/releases/download/sample-chart-0.1.1/sample-chart-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-09-17T17:08:32.135892112+05:30"
     description: A Helm chart for Kubernetes
     digest: 5cbda78554323d589ee2b7ff678735c684465286d0e78b5804aba83325b18f9c
@@ -11,4 +21,4 @@ entries:
     urls:
     - sample-chart-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-17T17:08:32.135056574+05:30"
+generated: "2022-09-20T13:07:29.033536996Z"
