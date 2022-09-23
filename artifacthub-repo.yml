@@ -1,5 +1,5 @@
 # Artifact Hub repository metadata file
 repositoryID: 014c687f-f57c-4fc7-ab66-df34460ee6bf
 owners:
-  - name: bhogayatakb
-    email: keval@middleware.io
+  - name: middleware-devs
+    email: dev@middleware.io
