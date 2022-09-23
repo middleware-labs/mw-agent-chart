@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  kube-agent-chart:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-09-23T10:50:49.581016659Z"
+    description: A Helm chart for Kubernetes
+    digest: c0610dcb64ab065ca488eade60d18ac5658690c383d24c8198fb22bb12f2a12f
+    name: kube-agent-chart
+    type: application
+    urls:
+    - https://github.com/middleware-labs/helm-charts/releases/download/kube-agent-chart-0.1.2/kube-agent-chart-0.1.2.tgz
+    version: 0.1.2
   sample-chart:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -31,4 +42,4 @@ entries:
     urls:
     - sample-chart-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-21T06:35:52.161987591Z"
+generated: "2022-09-23T10:50:49.581050959Z"
