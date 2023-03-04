@@ -11,4 +11,15 @@ entries:
     urls:
     - https://github.com/middleware-labs/helm-charts/releases/download/kube-agent-chart-0.1.2/kube-agent-chart-0.1.2.tgz
     version: 0.1.2
-generated: "2022-09-23T10:50:49.581050959Z"
+  middleware-odigos:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-03-04T05:27:14.61717036Z"
+    description: A Helm chart for Kubernetes
+    digest: 1bdf5af12f0a3c31154e6c22c6033ba29d419a25d8346c7632622ad97b31ba5f
+    name: middleware-odigos
+    type: application
+    urls:
+    - https://github.com/middleware-labs/helm-charts/releases/download/middleware-odigos-0.2.11/middleware-odigos-0.2.11.tgz
+    version: 0.2.11
+generated: "2023-03-04T05:27:14.61717476Z"
