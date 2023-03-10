@@ -13,6 +13,16 @@ entries:
     version: 0.1.2
   middleware-odigos:
   - apiVersion: v2
+    appVersion: 1.19.0
+    created: "2023-03-10T09:42:42.369664665Z"
+    description: A Helm chart for Kubernetes
+    digest: 77b66079065f81eb817b56a6cea5b83d729061e3e6eac33e2e8fe7764d4f1292
+    name: middleware-odigos
+    type: application
+    urls:
+    - https://github.com/middleware-labs/helm-charts/releases/download/middleware-odigos-0.2.36/middleware-odigos-0.2.36.tgz
+    version: 0.2.36
+  - apiVersion: v2
     appVersion: 1.18.0
     created: "2023-03-10T08:44:48.596651837Z"
     description: A Helm chart for Kubernetes
@@ -252,4 +262,4 @@ entries:
     urls:
     - https://github.com/middleware-labs/helm-charts/releases/download/middleware-odigos-0.2.11/middleware-odigos-0.2.11.tgz
     version: 0.2.11
-generated: "2023-03-10T08:44:48.59699844Z"
+generated: "2023-03-10T09:42:42.369817665Z"
