@@ -5,7 +5,7 @@ metadata:
   name: vision-ui
   namespace: {{ .Release.Namespace }}
   annotations:
-    odigos.io/skip: "true"
+    vision.middleware.io/skip: "true"
   labels:
     app: vision-ui
 spec:
