@@ -31,9 +31,9 @@ instrumentor:
     repository: ghcr.io/middleware-labs/vision-instrumentor
     tag: middleware-test-0.0.1
 
-vision-cart:
+visioncart:
   image:
-    repository: ghcr.io/middleware-labs/vision-vision-cart
+    repository: ghcr.io/middleware-labs/vision-visioncart
     tag: middleware-test-0.0.1
 
 telemetry:

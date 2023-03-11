@@ -1,12 +1,12 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: vision-cart
+  name: visioncart
 subjects:
   - kind: ServiceAccount
-    name: vision-cart
+    name: visioncart
     namespace: {{ .Release.Namespace }}
 roleRef:
   kind: ClusterRole
-  name: vision-cart
+  name: visioncart
   apiGroup: rbac.authorization.k8s.io

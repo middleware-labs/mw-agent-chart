@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: vision-cart
+  name: visioncart
   namespace: {{ .Release.Namespace }}
   labels:
-    app: vision-cart
+    app: visioncart
 spec:
   selector:
     matchLabels:
-      app: vision-cart
+      app: visioncart
   template:
     metadata:
       labels:
-        app: vision-cart
+        app: visioncart
     spec:
       nodeSelector:
         kubernetes.io/os: linux
@@ -21,7 +21,7 @@ spec:
           operator: Equal
           value: windows
           effect: NoSchedule
-      serviceAccountName: vision-cart
+      serviceAccountName: visioncart
       hostNetwork: true
       hostPID: true
       dnsPolicy: ClusterFirstWithHostNet
@@ -30,8 +30,8 @@ spec:
 {{ toYaml .Values.imagePullSecrets | indent 6 }}
 {{- end }}
       containers:
-        - name: vision-cart
-          image: "{{ .Values.vision-cart.image.repository }}:{{ .Values.vision-cart.image.tag }}"
+        - name: visioncart
+          image: "{{ .Values.visioncart.image.repository }}:{{ .Values.visioncart.image.tag }}"
           imagePullPolicy: IfNotPresent
           env:
             - name: NODE_NAME
