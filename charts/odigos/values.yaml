@@ -38,3 +38,6 @@ odiglet:
 
 telemetry:
   enabled: true
+
+dummy:
+  enabled: true
