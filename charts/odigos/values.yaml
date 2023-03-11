@@ -33,7 +33,7 @@ instrumentor:
 
 visioncart:
   image:
-    repository: ghcr.io/middleware-labs/vision-ui
+    repository: ghcr.io/middleware-labs/vision-odiglet
     tag: middleware-test-0.0.1
 
 telemetry:
