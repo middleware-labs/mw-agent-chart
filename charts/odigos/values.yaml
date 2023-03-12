@@ -1,16 +1,16 @@
 autoscaler:
   image:
-    repository: ghcr.io/middleware-labs/odigos-autoscaler
-    tag: middleware-test-0.0.15
+    repository: ghcr.io/middleware-labs/vision-autoscaler
+    tag: middleware-test-0.0.18
 
 scheduler:
   image:
-    repository: ghcr.io/middleware-labs/odigos-scheduler
-    tag: middleware-test-0.0.1
+    repository: ghcr.io/middleware-labs/vision-scheduler
+    tag: middleware-test-0.0.2
 
 langDetector:
   image:
-    repository: ghcr.io/middleware-labs/odigos-lang-detector
+    repository: ghcr.io/middleware-labs/vision-lang-detector
     tag: middleware-test-0.0.1
 
 ui:
@@ -28,13 +28,13 @@ instrumentor:
     - istio-system
     - linkerd
   image:
-    repository: ghcr.io/middleware-labs/odigos-instrumentor
-    tag: middleware-test-0.0.1
+    repository: ghcr.io/middleware-labs/vision-instrumentor
+    tag: middleware-test-0.0.3
 
-odiglet:
+visioncart:
   image:
-    repository: ghcr.io/middleware-labs/odigos-odiglet
-    tag: middleware-test-0.0.1
+    repository: ghcr.io/middleware-labs/vision-odiglet
+    tag: middleware-test-0.0.2
 
 telemetry:
   enabled: true

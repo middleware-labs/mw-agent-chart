@@ -4,20 +4,20 @@ metadata:
   annotations:
     odigos.io/skip: "true"
   labels:
-    app: odigos-instrumentor
-  name: odigos-instrumentor
+    app: vision-instrumentor
+  name: vision-instrumentor
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: odigos-instrumentor
+      app: vision-instrumentor
   template:
     metadata:
       annotations:
         kubectl.kubernetes.io/default-container: manager
       labels:
-        app: odigos-instrumentor
+        app: vision-instrumentor
     spec:
 {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -76,7 +76,7 @@ spec:
           allowPrivilegeEscalation: false
       securityContext:
         runAsNonRoot: true
-      serviceAccountName: odigos-instrumentor
+      serviceAccountName: vision-instrumentor
       terminationGracePeriodSeconds: 10
       nodeSelector:
         kubernetes.io/os: linux
