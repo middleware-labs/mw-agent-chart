@@ -1,4 +1,4 @@
-Odigos installed successfully. For getting started go to the UI by running:
+Middleware Vision installed successfully. For getting started go to the UI by running:
 
 kubectl port-forward svc/vision-ui 3000:3000 -n {{ .Release.Namespace }}
 
