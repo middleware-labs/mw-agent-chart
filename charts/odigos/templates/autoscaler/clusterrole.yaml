@@ -4,7 +4,7 @@ metadata:
   name: vision-autoscaler
 rules:
   - apiGroups:
-      - odigos.io
+      - vision.middleware.io
     resources:
       - instrumentedapplications
     verbs:
@@ -16,13 +16,13 @@ rules:
       - update
       - watch
   - apiGroups:
-      - odigos.io
+      - vision.middleware.io
     resources:
       - instrumentedapplications/finalizers
     verbs:
       - update
   - apiGroups:
-      - odigos.io
+      - vision.middleware.io
     resources:
       - instrumentedapplications/status
     verbs:
