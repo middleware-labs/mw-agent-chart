@@ -1,7 +1,7 @@
 autoscaler:
   image:
     repository: ghcr.io/middleware-labs/vision-autoscaler
-    tag: middleware-test-0.0.21
+    tag: middleware-test-0.0.22
 
 scheduler:
   image:
