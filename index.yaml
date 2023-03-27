@@ -315,6 +315,16 @@ entries:
   middleware-vision:
   - apiVersion: v2
     appVersion: 1.19.4
+    created: "2023-03-27T17:50:52.409763543Z"
+    description: A Helm chart for Kubernetes
+    digest: 6444a1ad7372edf2d49b7f30df8cca3782a16ddb61a6296b4c8552fbf4911319
+    name: middleware-vision
+    type: application
+    urls:
+    - https://github.com/middleware-labs/helm-charts/releases/download/middleware-vision-0.2.65/middleware-vision-0.2.65.tgz
+    version: 0.2.65
+  - apiVersion: v2
+    appVersion: 1.19.4
     created: "2023-03-27T16:18:43.650309388Z"
     description: A Helm chart for Kubernetes
     digest: 96530171bb3ae4fd5dd39c7e795f28d4bc5716bde1e05a9aa7ac3d2e42ef3c76
@@ -543,4 +553,4 @@ entries:
     urls:
     - https://github.com/middleware-labs/helm-charts/releases/download/middleware-vision-0.1.650/middleware-vision-0.1.650.tgz
     version: 0.1.650
-generated: "2023-03-27T16:18:43.650641394Z"
+generated: "2023-03-27T17:50:52.410324545Z"
