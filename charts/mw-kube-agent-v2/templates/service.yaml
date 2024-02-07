@@ -1,0 +1,24 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    k8s-app: {{ .Values.app.name }}
+  name: {{ .Values.service.name }}
+  namespace: {{ .Values.namespace.name }}
+spec:
+  type: NodePort
+  ports:
+    - port: {{ .Values.service.grpc.port }}
+      name: "grpc"
+      targetPort: {{ .Values.service.grpc.targetPort }}
+    - port: {{ .Values.service.grpc2.port }}
+      name: "grpc2"
+      targetPort: {{ .Values.service.grpc2.targetPort }}
+    - port: {{ .Values.service.http.port }}
+      name: "http"
+      targetPort: {{ .Values.service.http.targetPort }}
+    - port: {{ .Values.service.fluent.port }}
+      name: "fluent"
+      targetPort: {{ .Values.service.fluent.targetPort }}
+  selector:
+    k8s-app-daemon: mw-app-daemon

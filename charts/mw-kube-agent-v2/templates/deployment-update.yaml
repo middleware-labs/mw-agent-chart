@@ -1,0 +1,50 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: {{ .Values.deployment.name }}-update
+  namespace: {{ .Values.namespace.name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.app.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app.name }}
+        k8s-app: {{ .Values.app.name }}
+    spec:
+      tolerations:
+      # these tolerations are to have the daemonset runnable on control plane nodes
+      # remove them if your control plane nodes should not run pods
+      - key: node-role.kubernetes.io/control-plane
+        operator: Exists
+        effect: NoSchedule
+      - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: NoSchedule
+      - operator: "Exists"
+        effect: "NoSchedule"
+      - operator: "Exists"
+        effect: "NoExecute"
+
+      containers:
+        - args:
+            - mw-agent 
+            - update
+          env:
+            - name: MW_API_URL_FOR_CONFIG_CHECK
+              value: {{ .Values.mw.configCheckURL }}
+            - name: MW_CONFIG_CHECK_INTERVAL
+              value: 60s
+            - name: MW_KUBE_CLUSTER_NAME
+              value: {{ .Values.cluster.name }}
+            - name: MW_API_KEY
+              value: {{ .Values.mw.apiKey }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.deploymenyUpdateTag }}
+          imagePullPolicy: {{.Values.image.pullPolicy}}
+          name: {{ .Values.image.name }}
+          securityContext:
+            privileged: true
+          resources: {}
+      restartPolicy: Always
+      serviceAccountName: {{ .Values.serviceAccount.name }}-update

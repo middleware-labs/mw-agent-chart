@@ -1,0 +1,96 @@
+kind: DaemonSet
+apiVersion: apps/v1
+metadata:
+  name: {{ .Values.daemonSet.name }}
+  namespace: {{ .Values.namespace.name }}
+spec:
+  selector:
+    matchLabels:
+      app: mw-app
+  template:
+    metadata:
+      labels:
+        app: mw-app
+    spec:
+      tolerations:
+      # these tolerations are to have the daemonset runnable on control plane nodes
+      # remove them if your control plane nodes should not run pods
+      - key: node-role.kubernetes.io/control-plane
+        operator: Exists
+        effect: NoSchedule
+      - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: NoSchedule
+      - operator: "Exists"
+        effect: "NoSchedule"
+      - operator: "Exists"
+        effect: "NoExecute"
+      volumes:
+        - name: mw-daemonset-otel-config-volume
+          configMap:
+            name: mw-daemonset-otel-config
+            items:
+              - key: otel-config
+                path: otel-config.yaml
+        # volume binding for log collection 
+        - name: varlog
+          hostPath:
+            path: /var/log
+        - name: varrun
+          hostPath:
+            path: /var/run/docker.sock
+        - name: runcontainerd
+          hostPath:
+            path: /run/containerd/containerd.sock
+        # volume binding for log collection
+        - name: varlibdockercontainers
+          hostPath:
+            path: /var/lib/docker/containers
+      containers:
+        - args:
+            - mw-agent
+            - start
+            - --otel-config-file
+            - /app/otel-config.yaml            
+          env:
+            - name: MW_TARGET
+              value: {{ .Values.mw.target }}
+            - name: MW_API_KEY
+              value: {{ .Values.mw.apiKey }}
+            - name: MW_DOCKER_ENDPOINT
+              value: {{ .Values.mw.dockerEndPoint }}
+            - name: MW_KUBE_CLUSTER_NAME
+              value: {{ .Values.cluster.name }}
+            - name: K8S_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: K8S_NODE_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+          image: {{ .Values.image.repository }}:{{ .Values.image.daemontag | default .Chart.AppVersion }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          name: {{ .Chart.Name }}
+          securityContext:
+            allowPrivilegeEscalation: true
+          volumeMounts:
+          - name: mw-daemonset-otel-config-volume
+            mountPath: /app
+          - name: varlog
+            mountPath: /var/log
+            readOnly: true
+          - name: varrun
+            mountPath: /var/run/docker.sock
+            readOnly: true
+          - name: runcontainerd
+            mountPath: /run/containerd/containerd.sock
+            readOnly: true
+          - name: varlibdockercontainers
+            mountPath: /var/lib/docker/containers
+            readOnly: true
+          resources: {}
+      restartPolicy: Always
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+
+    
