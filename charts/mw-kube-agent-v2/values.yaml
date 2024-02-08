@@ -3,10 +3,10 @@
 # Declare variables to be passed into your templates.
 
 mw:
-  target: "https://pradyuman.stage.env.middleware.io:443"
-  apiKey: phzritqvblkhdbwawohyrcioogfndwqmwblg
+  target: MW_TARGET
+  apiKey: MW_API_KEY
   dockerEndPoint: ""
-  configCheckURL: "https://12d1-59-144-126-168.ngrok-free.app"
+  configCheckURL: MW_TARGET
 
 replicaCount: 1
 
