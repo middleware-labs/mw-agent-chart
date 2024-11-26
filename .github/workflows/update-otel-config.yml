@@ -46,6 +46,20 @@ jobs:
       #     path: target-repo
       #     token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Print Full Token (Debug Only)
+        run: |
+          echo "::add-mask::$GITHUB_TOKEN"  # This masks the token in logs
+          echo "$GITHUB_TOKEN"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      
+      - name: Print Full Token (Debug Only)
+        run: |
+          echo "::add-mask::$GITHUB_TOKEN"  # This masks the token in logs
+          echo "$GITHUB_TOKEN"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Check Token Permissions
         run: |
           echo "Token length: ${#GITHUB_TOKEN}"
