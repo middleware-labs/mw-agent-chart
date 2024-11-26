@@ -46,15 +46,15 @@ jobs:
           path: target-repo
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check Token Permissions
-        run: |
-          echo "${{ secrets.GH_TOKEN }}"
-          curl -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
-            https://api.github.com/repos/middleware-labs/install.middleware.io
+      # - name: Check Token Permissions
+      #   run: |
+      #     echo "${{ secrets.GH_TOKEN }}"
+      #     curl -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
+      #       https://api.github.com/repos/middleware-labs/install.middleware.io
 
       - name: Create branch and update file
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: "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"
         run: |
           cd target-repo
           
@@ -85,7 +85,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: "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"
           branch: ${{ env.BRANCH_NAME }}
           base: master
           title: "Update OTel config from helm charts"
