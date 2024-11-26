@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 env:
-  NT: gthub
+  NT: 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
 jobs:
   update-config:
     runs-on: ubuntu-latest
@@ -73,7 +73,9 @@ jobs:
           echo "Token length: ${#GH_TOKEN}"
           echo "Token preview: ${GH_TOKEN:0:4}..."
           #echo "${{ secrets.GH_TOKEN }}"
-          curl -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
+          x = $NT
+          echo $x
+          curl -H "Authorization: token $x" \
             https://api.github.com/repos/middleware-labs/install.middleware.io
 
       # - name: Create branch and update file
