@@ -46,11 +46,11 @@ jobs:
           path: target-repo
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Check Token Permissions
-      #   run: |
-      #     echo "${{ secrets.GH_TOKEN }}"
-      #     curl -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
-      #       https://api.github.com/repos/middleware-labs/install.middleware.io
+      - name: Check Token Permissions
+        run: |
+          echo "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"
+          curl -H "Authorization: token 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" \
+            https://api.github.com/repos/middleware-labs/install.middleware.io
 
       - name: Create branch and update file
         env:
