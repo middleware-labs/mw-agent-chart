@@ -47,8 +47,8 @@ jobs:
       - name: Create branch and update file
         run: |
           cd target-repo
-          git config user.name "GitHub Action"
-          git config user.email "action@github.com"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
 
           # Create new branch
           BRANCH_NAME="update-otel-config-$(date +%Y%m%d-%H%M%S)"
