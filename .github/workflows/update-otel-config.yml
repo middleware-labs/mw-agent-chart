@@ -55,7 +55,7 @@ jobs:
           git checkout -b $BRANCH_NAME
 
           # Update the file
-          cp /tmp/new-daemonset-config scripts/otel-config-daemonset.yaml
+          cp /tmp/new-daemonset-config.yaml scripts/otel-config-daemonset.yaml
           cp /tmp/new-deployment-config.yaml scripts/otel-config-deployment.yaml
 
           # Commit and push changes
