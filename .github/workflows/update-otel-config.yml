@@ -4,7 +4,7 @@ on:
     branches:
       - test-workflow
     paths:
-      - "helm-charts/charts/mw-kube-agent-v2/templates/configmap-deployment.yaml"
+      #- "helm-charts/charts/mw-kube-agent-v2/templates/configmap-deployment.yaml"
       - "helm-charts/charts/mw-kube-agent-v2/templates/configmap-daemonset.yaml"
 
 jobs:
