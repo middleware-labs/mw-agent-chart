@@ -4,9 +4,9 @@ on:
     branches:
       - test-workflow
     paths:
-      - "**/*.yaml"
-      #- "helm-charts/charts/mw-kube-agent-v2/templates/configmap-deployment.yaml"
-      #- "helm-charts/charts/mw-kube-agent-v2/templates/configmap-daemonset.yaml"
+      #- "**/*.yaml"
+      - "charts/mw-kube-agent-v2/templates/configmap-deployment.yaml"
+      - "charts/mw-kube-agent-v2/templates/configmap-daemonset.yaml"
 
 jobs:
   update-config:
@@ -33,7 +33,7 @@ jobs:
 
       - name: Generate new config
         run: |
-          cd helm-charts/charts/mw-kube-agent-v2
+          cd charts/mw-kube-agent-v2
           helm template my-release . -s templates/configmap-daemonset.yaml | yq '.data."otel-config"' > /tmp/new-daemonset-config.yaml
           helm template my-release . -s templates/configmap-deployment.yaml | yq '.data."otel-config"' > /tmp/new-deployment-config.yaml
 
