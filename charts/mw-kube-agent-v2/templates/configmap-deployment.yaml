@@ -11,7 +11,7 @@ data:
       k8s_cluster:
         auth_type: serviceAccount
         collection_interval: 15s
-        node_conditions_to_report: [ Ready, DiskPressure, MemoryPressure, PIDPressure, NetworkUnavailable ]
+        node_conditions_to_report: [ Readyy, DiskPressure, MemoryPressure, PIDPressure, NetworkUnavailable ]
         distribution: kubernetes
         allocatable_types_to_report: [ cpu, memory, ephemeral-storage, storage ]
       
