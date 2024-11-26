@@ -82,18 +82,18 @@ jobs:
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
 
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: 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
-          branch: ${{ env.BRANCH_NAME }}
-          base: master
-          title: "Update OTel config from helm charts"
-          body: |
-            Automated PR to update OTel configuration.
+      # - name: Create Pull Request
+      #   uses: peter-evans/create-pull-request@v6
+      #   with:
+      #     token: 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
+      #     branch: ${{ env.BRANCH_NAME }}
+      #     base: master
+      #     title: "Update OTel config from helm charts"
+      #     body: |
+      #       Automated PR to update OTel configuration.
 
-            Changes triggered by updates to:
-            - configmap-deployment.yaml
-            - configmap-daemonset.yaml
+      #       Changes triggered by updates to:
+      #       - configmap-deployment.yaml
+      #       - configmap-daemonset.yaml
 
-            Please review the changes carefully before merging.
+      #       Please review the changes carefully before merging.
