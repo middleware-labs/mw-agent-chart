@@ -161,7 +161,7 @@ jobs:
 
       - name: Create branch and update file
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GHCR_TOKEN }}
         run: |
           git config --global user.email "naman.jain@middleware.io"
           git config --global user.name "naman-jain-15"
