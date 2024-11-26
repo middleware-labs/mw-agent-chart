@@ -74,8 +74,8 @@ jobs:
           echo "Token preview: ${GH_TOKEN:0:4}..."
           #echo "${{ secrets.GH_TOKEN }}"
 
-          curl -H "Authorization: token $NT" \
-            https://api.github.com/repos/middleware-labs/install.middleware.io
+          curl -H "Authorization: token $(echo $NT)" \
+                https://api.github.com/repos/middleware-labs/install.middleware.io
 
       # - name: Create branch and update file
       #   env:
