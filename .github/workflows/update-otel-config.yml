@@ -2,7 +2,7 @@ name: Update OTel Config
 on:
   push:
     branches:
-      - test_workflow
+      - test-workflow
     paths:
       - "helm-charts/charts/mw-kube-agent-v2/templates/configmap-deployment.yaml"
       - "helm-charts/charts/mw-kube-agent-v2/templates/configmap-daemonset.yaml"
