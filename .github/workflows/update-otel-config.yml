@@ -144,7 +144,7 @@ jobs:
         with:
             repository: middleware-labs/install.middleware.io
             path: target-repo
-            token: ${{ secrets.GH_TOKEN }}
+            token: ${{ secrets.GITHUB_TOKEN }}
 
     #   - name: Check Token Permissions
     #     run: |
