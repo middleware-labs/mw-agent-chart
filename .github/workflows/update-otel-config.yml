@@ -46,7 +46,8 @@ jobs:
         with:
           repository: middleware-labs/install.middleware.io
           path: target-repo
-          token: ${{ secrets.NT }}
+          token: $NT
+          # token: ${{ secrets.NT }}
 
       - name: Check Token Permissions
         run: |
