@@ -1,0 +1,82 @@
+name: Update OTel Config
+on:
+  push:
+    branches:
+      - test_workflow
+    paths:
+      - "helm-charts/charts/mw-kube-agent-v2/templates/configmap-deployment.yaml"
+      - "helm-charts/charts/mw-kube-agent-v2/templates/configmap-daemonset.yaml"
+
+jobs:
+  update-config:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+
+      - name: Set up Git credentials
+        run: |
+          git config --global url."https://${{ secrets.GHCR_TOKEN }}:@github.com/".insteadOf "https://github.com/"
+        env:
+          GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: "latest"
+
+      - name: Install yq
+        run: |
+          wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
+          chmod +x /usr/local/bin/yq
+
+      - name: Generate new config
+        run: |
+          cd helm-charts/charts/mw-kube-agent-v2
+          helm template my-release . -s templates/configmap-daemonset.yaml | yq '.data."otel-config"' > /tmp/new-daemonset-config.yaml
+          helm template my-release . -s templates/configmap-deployment.yaml | yq '.data."otel-config"' > /tmp/new-deployment-config.yaml
+
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          repository: middleware-labs/install.middleware.io
+          path: target-repo
+          token: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Create branch and update file
+        run: |
+          cd target-repo
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+
+          # Create new branch
+          BRANCH_NAME="update-otel-config-$(date +%Y%m%d-%H%M%S)"
+          git checkout -b $BRANCH_NAME
+
+          # Update the file
+          cp /tmp/new-daemonset-config scripts/otel-config-daemonset.yaml
+          cp /tmp/new-deployment-config.yaml scripts/otel-config-deployment.yaml
+
+          # Commit and push changes
+          git add .
+          git commit -m "Update OTel config from helm charts"
+          git push origin $BRANCH_NAME
+
+          # Store branch name for next step
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GHCR_TOKEN }}
+          branch: ${{ env.BRANCH_NAME }}
+          base: master
+          title: "Update OTel config from helm charts"
+          body: |
+            Automated PR to update OTel configuration.
+
+            Changes triggered by updates to:
+            - configmap-deployment.yaml
+            - configmap-daemonset.yaml
+
+            Please review the changes carefully before merging.
