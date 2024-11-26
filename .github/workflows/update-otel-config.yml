@@ -54,7 +54,7 @@ jobs:
 
       - name: Create branch and update file
         env:
-          GH_TOKEN: "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"
+          GH_TOKEN: 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
         run: |
           cd target-repo
           
@@ -85,7 +85,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: "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"
+          token: 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
           branch: ${{ env.BRANCH_NAME }}
           base: master
           title: "Update OTel config from helm charts"
