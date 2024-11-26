@@ -17,11 +17,11 @@ jobs:
       - name: Checkout source repository
         uses: actions/checkout@v4
 
-      - name: Set up Git credentials
-        run: |
-          git config --global url."https://${{ secrets.GHCR_TOKEN }}:@github.com/".insteadOf "https://github.com/"
-        env:
-          GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
+      # - name: Set up Git credentials
+      #   run: |
+      #     git config --global url."https://${{ secrets.GHCR_TOKEN }}:@github.com/".insteadOf "https://github.com/"
+      #   env:
+      #     GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
 
       - name: Set up Helm
         uses: azure/setup-helm@v3
@@ -48,6 +48,7 @@ jobs:
 
       - name: Check Token Permissions
         run: |
+          echo "${{ secrets.GH_TOKEN }}"
           curl -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
             https://api.github.com/repos/middleware-labs/install.middleware.io
 
