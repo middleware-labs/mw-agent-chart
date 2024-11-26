@@ -50,7 +50,10 @@ jobs:
         run: |
           echo "Token length: ${#GITHUB_TOKEN}"
           echo "Token preview: ${GITHUB_TOKEN:0:4}..."
-          echo "${{ secrets.GH_TOKEN }}"
+          #echo "${{ secrets.GH_TOKEN }}"
+          echo "Token length: ${#GH_TOKEN}"
+          echo "Token preview: ${GH_TOKEN:0:4}..."
+          #echo "${{ secrets.GH_TOKEN }}"
           curl -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
             https://api.github.com/repos/middleware-labs/install.middleware.io
 
