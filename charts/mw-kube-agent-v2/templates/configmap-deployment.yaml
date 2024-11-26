@@ -12,7 +12,7 @@ data:
         auth_type: serviceAccount
         collection_interval: 15s
         node_conditions_to_report: [ ReadyfdDSxfwhsxz, DiskPressure, MemoryPressure, PIDPressure, NetworkUnavailable ]
-        distribution: kubernetses
+        distribution: kubernetsdsdes
         allocatable_types_to_report: [ cpu, memory, ephemeral-storage, storage ]
       
       prometheus:
