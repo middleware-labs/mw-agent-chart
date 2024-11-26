@@ -10,6 +10,8 @@ on:
 permissions:
   contents: write
 
+env:
+  NT: gthub
 jobs:
   update-config:
     runs-on: ubuntu-latest
@@ -62,8 +64,11 @@ jobs:
 
       - name: Check Token Permissions
         run: |
-          echo "Token length: ${#GITHUB_TOKEN}"
-          echo "Token preview: ${GITHUB_TOKEN:0:4}..."
+          echo "$NT"
+          echo "Token length: ${#NT}"
+          echo "Token preview: ${NT:0:4}..."
+          echo "Token length: ${#NT}"
+          echo "Token preview: ${NT:0:4}..."
           #echo "${{ secrets.GH_TOKEN }}"
           echo "Token length: ${#GH_TOKEN}"
           echo "Token preview: ${GH_TOKEN:0:4}..."
