@@ -1,0 +1,44 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mw-kube-agent-update
+  namespace: {{.Values.namespace.name}}
+spec:
+  schedule: "{{ .Values.mw.configCheckInterval }}"  # Adjust the schedule as needed
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: mw-app
+            k8s-app: mw-app
+        spec:
+          tolerations:
+            - key: node-role.kubernetes.io/control-plane
+              effect: NoSchedule
+            - key: node-role.kubernetes.io/master
+              effect: NoSchedule
+          containers:
+            - name: mw-kube-agent
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              args:
+                - mw-agent
+                - update
+              env:
+                - name: MW_TARGET
+                  value: {{ .Values.mw.target }}
+                - name: MW_API_URL_FOR_CONFIG_CHECK
+                  value: {{ .Values.apiUrlForConfigCheck }}
+                - name: MW_CONFIG_CHECK_INTERVAL
+                  value: "60s"
+                - name: MW_KUBE_CLUSTER_NAME
+                  value: {{ .Values.clusterMetadata.name }}
+                - name: MW_NAMESPACE
+                  value: {{ .Values.namespace.name }}
+                - name: MW_API_KEY
+                  value: {{ .Values.mw.apiKey }}
+              securityContext:
+                privileged: true
+          restartPolicy: OnFailure
+          serviceAccountName: mw-service-account-update
