@@ -609,6 +609,16 @@ entries:
     version: 0.1.2
   mw-kube-agent-v2:
   - apiVersion: v2
+    appVersion: 0.1.8
+    created: "2025-01-16T12:03:50.250841452Z"
+    description: A Helm chart for Kubernetes
+    digest: 99480b9872a45bcec438051436d2e920ac39ed4f2bcd4b6410522f84599ebabe
+    name: mw-kube-agent-v2
+    type: application
+    urls:
+    - https://github.com/middleware-labs/helm-charts/releases/download/mw-kube-agent-v2-2.6.0/mw-kube-agent-v2-2.6.0.tgz
+    version: 2.6.0
+  - apiVersion: v2
     appVersion: 0.1.7
     created: "2025-01-14T05:45:28.949478141Z"
     description: A Helm chart for Kubernetes
@@ -858,4 +868,4 @@ entries:
     urls:
     - https://github.com/middleware-labs/helm-charts/releases/download/mw-kube-agent-v2-2.0.0/mw-kube-agent-v2-2.0.0.tgz
     version: 2.0.0
-generated: "2025-01-14T05:45:28.949955911Z"
+generated: "2025-01-16T12:03:50.251223006Z"
